@@ -1,0 +1,72 @@
+# Cometix Tab - Zed Extension
+# AI Code Completion powered by Cursor API via LSP
+
+id = "cometix-tab"
+name = "Cometix Tab"
+description = "AI Code Completion powered by Cursor API - Brings intelligent code completion to Zed via LSP"
+version = "0.1.0"
+schema_version = 1
+authors = ["Haleclipse <haleclipse@example.com>"]
+repository = "https://github.com/Haleclipse/Cometix-Tab"
+
+# Language Server Configuration
+# This LSP provides AI completions for all supported languages
+[language_servers.cometix-lsp]
+name = "Cometix AI Completion"
+languages = [
+    "JavaScript",
+    "TypeScript", 
+    "TSX",
+    "JSX",
+    "Python",
+    "Rust",
+    "Go",
+    "Java",
+    "C",
+    "C++",
+    "C#",
+    "PHP",
+    "Ruby",
+    "Swift",
+    "Kotlin",
+    "Scala",
+    "HTML",
+    "CSS",
+    "SCSS",
+    "JSON",
+    "YAML",
+    "Markdown",
+    "SQL",
+    "Shell Script",
+    "Dockerfile",
+    "TOML"
+]
+
+# Language ID mappings for LSP
+[language_servers.cometix-lsp.language_ids]
+"JavaScript" = "javascript"
+"TypeScript" = "typescript"
+"TSX" = "typescriptreact"
+"JSX" = "javascriptreact"
+"Python" = "python"
+"Rust" = "rust"
+"Go" = "go"
+"Java" = "java"
+"C" = "c"
+"C++" = "cpp"
+"C#" = "csharp"
+"PHP" = "php"
+"Ruby" = "ruby"
+"Swift" = "swift"
+"Kotlin" = "kotlin"
+"Scala" = "scala"
+"HTML" = "html"
+"CSS" = "css"
+"SCSS" = "scss"
+"JSON" = "json"
+"YAML" = "yaml"
+"Markdown" = "markdown"
+"SQL" = "sql"
+"Shell Script" = "shellscript"
+"Dockerfile" = "dockerfile"
+"TOML" = "toml"

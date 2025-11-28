@@ -1,0 +1,52 @@
+{
+  "name": "cometix-mcp-server",
+  "version": "0.1.0",
+  "description": "MCP Server for Cometix AI Code Completion - Cursor API integration for Zed",
+  "main": "dist/index.js",
+  "bin": {
+    "cometix-mcp-server": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "clean": "rm -rf dist",
+    "package": "pnpm run build && pkg . --out-path releases",
+    "package:all": "pnpm run build && pkg . --targets node20-macos-arm64,node20-macos-x64,node20-linux-x64,node20-linux-arm64,node20-win-x64 --out-path releases"
+  },
+  "keywords": [
+    "mcp",
+    "cursor",
+    "ai",
+    "code-completion",
+    "zed"
+  ],
+  "author": "Haleclipse",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "@bufbuild/protobuf": "1.10.0",
+    "@connectrpc/connect": "1.6.1",
+    "@connectrpc/connect-web": "1.6.1",
+    "crypto-js": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/crypto-js": "^4.2.2",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.8.0",
+    "ts-node": "^10.9.0",
+    "pkg": "^5.8.1"
+  },
+  "pkg": {
+    "scripts": "dist/**/*.js",
+    "assets": [],
+    "targets": [
+      "node20-macos-arm64",
+      "node20-macos-x64",
+      "node20-linux-x64",
+      "node20-linux-arm64",
+      "node20-win-x64"
+    ],
+    "outputPath": "releases"
+  }
+}

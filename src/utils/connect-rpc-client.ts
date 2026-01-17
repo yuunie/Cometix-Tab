@@ -128,12 +128,16 @@ export class ConnectRpcClient {
       this.logger.info('🚀 开始Connect RPC StreamCpp调用');
       
       // 构建请求体
-      let requestBody: string | Uint8Array;
+      let requestBody: BodyInit;
       if (encoding === 'json') {
         const jsonRequest = this.protobufUtils.createStreamCppRequestJSON(request);
         requestBody = JSON.stringify(jsonRequest);
       } else {
-        requestBody = this.protobufUtils.createStreamCppRequest(request);
+        const binaryData = this.protobufUtils.createStreamCppRequest(request);
+        // Copy to a new ArrayBuffer to ensure compatibility with Blob
+        const buffer = new ArrayBuffer(binaryData.byteLength);
+        new Uint8Array(buffer).set(binaryData);
+        requestBody = new Blob([buffer]);
       }
 
       // 发起Connect RPC调用
@@ -213,12 +217,16 @@ export class ConnectRpcClient {
       this.logger.info('📤 开始Connect RPC FSUploadFile调用');
 
       // 构建请求体
-      let requestBody: string | Uint8Array;
+      let requestBody: BodyInit;
       if (encoding === 'json') {
         const jsonRequest = this.protobufUtils.createFSUploadFileRequestJSON(fileInfo, uuid);
         requestBody = JSON.stringify(jsonRequest);
       } else {
-        requestBody = this.protobufUtils.createFSUploadFileRequest(fileInfo, uuid);
+        const binaryData = this.protobufUtils.createFSUploadFileRequest(fileInfo, uuid);
+        // Copy to a new ArrayBuffer to ensure compatibility with Blob
+        const buffer = new ArrayBuffer(binaryData.byteLength);
+        new Uint8Array(buffer).set(binaryData);
+        requestBody = new Blob([buffer]);
       }
 
       const url = `${this.baseUrl}/aiserver.v1.FileSyncService/FSUploadFile`;

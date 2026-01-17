@@ -47,7 +47,7 @@ export class SSEParser {
    */
   async *parseSSEStream(stream: ReadableStream<Uint8Array>): AsyncGenerator<SSEMessage, void, unknown> {
     const reader = stream.getReader();
-    let buffer = new Uint8Array(0);
+    let buffer: Uint8Array = new Uint8Array(0);
 
     try {
       while (true) {
@@ -58,11 +58,11 @@ export class SSEParser {
         }
 
         // 合并缓冲区数据
-        buffer = this.concatenateUint8Arrays(buffer, value);
+        buffer = this.concatenateUint8Arrays(buffer, new Uint8Array(value.buffer, value.byteOffset, value.byteLength));
 
         // 解析所有完整的消息
         const result = this.parseMessages(buffer);
-        buffer = result.remaining;
+        buffer = new Uint8Array(result.remaining.buffer, result.remaining.byteOffset, result.remaining.byteLength);
 
         // 生成解析出的消息
         for (const message of result.messages) {
@@ -240,7 +240,10 @@ export class SSEParser {
       const writer = stream.writable.getWriter();
       const reader = stream.readable.getReader();
 
-      writer.write(buffer);
+      // Copy to a new ArrayBuffer to ensure compatibility with WritableStreamDefaultWriter
+      const bufferCopy = new ArrayBuffer(buffer.byteLength);
+      new Uint8Array(bufferCopy).set(buffer);
+      writer.write(new Uint8Array(bufferCopy));
       writer.close();
 
       const chunks: Uint8Array[] = [];
@@ -249,7 +252,7 @@ export class SSEParser {
         if (done) {
           break;
         }
-        chunks.push(value);
+        chunks.push(new Uint8Array(value.buffer, value.byteOffset, value.byteLength));
       }
 
       return this.concatenateUint8Arrays(...chunks);

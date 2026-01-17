@@ -219,7 +219,7 @@
               "maximum": 200
             },
             "below": {
-              "type": "number", 
+              "type": "number",
               "default": 50,
               "minimum": 0,
               "maximum": 200
@@ -253,13 +253,13 @@
               "description": "Enable completion trigger after comma (,)"
             },
             "newLineHighConfidence": {
-              "type": "boolean", 
+              "type": "boolean",
               "default": true,
               "description": "High confidence completion on new empty lines"
             },
             "lineEndHighConfidence": {
               "type": "boolean",
-              "default": true, 
+              "default": true,
               "description": "High confidence completion at line end positions"
             },
             "customTriggerChars": {
@@ -304,28 +304,28 @@
   },
   "devDependencies": {
     "@bufbuild/protoc-gen-es": "1.10.0",
-    "@connectrpc/protoc-gen-connect-es": "^1.6.0",
+    "@connectrpc/protoc-gen-connect-es": "^1.7.0",
     "@types/crypto-js": "^4.2.2",
     "@types/mocha": "^10.0.10",
-    "@types/node": "20.x",
-    "@types/vscode": "^1.102.0",
-    "@typescript-eslint/eslint-plugin": "^8.31.1",
-    "@typescript-eslint/parser": "^8.31.1",
-    "@vscode/test-cli": "^0.0.11",
+    "@types/node": "~25.0.9",
+    "@types/vscode": "^1.108.1",
+    "@typescript-eslint/eslint-plugin": "^8.53.0",
+    "@typescript-eslint/parser": "^8.53.0",
+    "@vscode/test-cli": "^0.0.12",
     "@vscode/test-electron": "^2.5.2",
-    "@vscode/vsce": "^3.6.0",
-    "esbuild": "^0.25.3",
-    "eslint": "^9.25.1",
+    "@vscode/vsce": "^3.7.1",
+    "esbuild": "^0.27.2",
+    "eslint": "^9.39.2",
     "npm-run-all": "^4.1.5",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.3"
   },
   "dependencies": {
     "@bufbuild/protobuf": "1.10.0",
-    "@connectrpc/connect": "1.6.1",
-    "@connectrpc/connect-web": "1.6.1",
+    "@connectrpc/connect": "1.7.0",
+    "@connectrpc/connect-web": "1.7.0",
     "crypto-js": "^4.2.0",
-    "diff": "^8.0.2",
-    "protobufjs": "^7.5.3"
+    "diff": "^8.0.3",
+    "protobufjs": "^8.0.0"
   },
   "packageManager": "pnpm@10.12.4+sha512.5ea8b0deed94ed68691c9bad4c955492705c5eeb8a87ef86bc62c74a26b037b08ff9570f108b2e4dbd1dd1a9186fea925e527f141c648e85af45631074680184"
 }
